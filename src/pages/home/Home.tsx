@@ -5,7 +5,7 @@ import {RootState} from "../../store/store"
 import {setSearchedFilm} from '../../store/slices/film'
 import { api } from '../../services/api'
 import { debounce } from 'lodash';
-import {Form} from './Home.styles'
+import {Form,Loading} from './Home.styles'
 const Home = () => {
 
     const [loading, setLoading] = useState<boolean>(true);
@@ -52,7 +52,7 @@ const Home = () => {
         <Form>
         <input type='text' placeholder='Search Films' onChange={(event) => debouncedOnChange(event)}/>
         </Form>
-        { loading? <p>Loading....</p> : (film.map((item)=>(
+        { loading? <Loading>Loading....</Loading> : (film.map((item)=>(
             <FilmCard id={item.episode_id} name={item.title} key={item.title}   release_date= {item.release_date}/>
         )))} 
         

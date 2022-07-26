@@ -9,7 +9,7 @@ const Navbar = () => {
             <Link to='/'>
                 <img src={logo} alt="Logo For Star Wars"/>
             </Link>
-            <h1>Search For The Latest Star Wars Films</h1>
+            <h1>Search For Star Wars Films</h1>
         </Wrapper>
     )
 }

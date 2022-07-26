@@ -18,3 +18,8 @@ input{
 }
 
 `
+
+export const Loading=styled.p`
+text-align:center;
+margin-top:20px;
+font-size:2rem;`
