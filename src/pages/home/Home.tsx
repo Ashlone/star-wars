@@ -25,13 +25,15 @@ const Home = () => {
          //Fetching the searched data
            const getSearchedData = useCallback(async () => {
             try {
+                setLoading(true)
                 const {data} = await api.get(`films/?search=${searchFilm}`);
-                console.log(data.results)
                    dispatch(setSearchedFilm(data.results))
+                   setLoading(false)
             } catch (err){
                 console.log(err)
+                setLoading(false)
             } 
-          }, [searchFilm]);
+          }, [dispatch,searchFilm]);
          
            useEffect(() => {
               getSearchedData()
@@ -50,7 +52,7 @@ const Home = () => {
         <Form>
         <input type='text' placeholder='Search Films' onChange={(event) => debouncedOnChange(event)}/>
         </Form>
-        { !loading? <p>No Search History</p> : (film.map((item)=>(
+        { loading? <p>Loading....</p> : (film.map((item)=>(
             <FilmCard id={item.episode_id} name={item.title} key={item.title}   release_date= {item.release_date}/>
         )))} 
         
